@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ip_hash: MyText
+  created_at: 2018-08-03 12:26:27
+  notes: one
+
+two:
+  ip_hash: MyText
+  created_at: 2018-08-03 12:26:27
+  notes: two
