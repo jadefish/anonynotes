@@ -14,16 +14,15 @@ ActiveRecord::Schema.define(version: 2018_08_03_162625) do
 
   create_table "likes", force: :cascade do |t|
     t.text "ip_hash", null: false
-    t.datetime "created_at", null: false
-    t.integer "notes_id", null: false
+    t.datetime "created_at", null: false, default: -> { 'CURRENT_TIMESTAMP' }
+    t.references "notes", null: false, index: true, foreign_key: { on_update: :cascade, on_delete: :cascade }
     t.index ["ip_hash", "notes_id"], name: "index_likes_on_ip_hash_and_notes_id", unique: true
-    t.index ["notes_id"], name: "index_likes_on_notes_id"
   end
 
   create_table "notes", force: :cascade do |t|
     t.text "identifier", null: false
     t.text "text", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", null: false, default: -> { 'CURRENT_TIMESTAMP' }
     t.index ["identifier"], name: "index_notes_on_identifier", unique: true
   end
 
