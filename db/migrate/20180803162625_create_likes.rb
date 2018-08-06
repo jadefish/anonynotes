@@ -3,7 +3,7 @@ class CreateLikes < ActiveRecord::Migration[5.2]
     create_table :likes do |t|
       t.text :ip_hash, null: false
       t.datetime :created_at, null: false, default: -> { 'CURRENT_TIMESTAMP' }
-      t.references :notes, null: false, index: true, foreign_key: { on_update: :cascade, on_delete: :cascade }
+      t.belongs_to :note, null: false, index: true, foreign_key: { on_update: :cascade, on_delete: :cascade }
     end
 
     add_index :likes, [:ip_hash, 'notes_id'], unique: true

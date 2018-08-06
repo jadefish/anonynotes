@@ -1,3 +1,3 @@
 class Like < ApplicationRecord
-  belongs_to :notes
+  belongs_to :note
 end
