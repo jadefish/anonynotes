@@ -1,3 +1,12 @@
-// Place all the styles related to the Notes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#note_text {
+    width: 100%;
+    resize: vertical;
+    font-family: serif;
+    font-size: 125%;
+}
+
+textarea#note_text {
+    min-height: calc(4 * 1em * 20/14 + 0.2em * 2 + 2px); // 4 lines
+    height: calc(7 * 1em * 20/14 + 0.2em * 2 + 2px); // 7 lines
+    max-height: 70vh;
+}
