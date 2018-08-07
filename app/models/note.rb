@@ -1,5 +1,3 @@
-require 'random_word'
-
 class Note < ApplicationRecord
   include ActiveModel::Validations
 
