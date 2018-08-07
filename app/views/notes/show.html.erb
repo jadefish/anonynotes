@@ -1,15 +1,13 @@
 <%- title @note.summary %>
 <main>
     <blockquote>
-        <p><%=@note.text%></p>
+        <p id="note_text"><%=@note.text%></p>
         <footer>
             &#x2015;<cite>anonymous, <time datetime="<%=@note.created_at.getutc.iso8601%>" title="<%=@note.created_at.getutc.iso8601%>"><%=time_ago_in_words @note.created_at%> ago</time></cite>
         </footer>
     </blockquote>
-    <p>
-        <%=form_with url: note_likes_path(note_identifier: @note.identifier), local: true, class: 'display-inline' do |form| %>
-            <%=form.button @like_glyph, type: :submit, title: @like_title, class: 'button-transparent display-inline' %>
-            <span>+<%=number_to_human @note.likes.size%></span>
-        <% end %>
-    </p>
+    <%=form_with url: note_likes_path(note_identifier: @note.identifier), local: true, class: 'display-inline' do |form| %>
+        <%=form.button @like_glyph, type: :submit, title: @like_title, class: 'button-transparent display-inline' %>
+        <span>+<%=number_to_human @note.likes.size%></span>
+    <% end %>
 </main>
