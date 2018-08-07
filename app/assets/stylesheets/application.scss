@@ -1,0 +1,118 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import 'variables.scss';
+@import 'functions.scss';
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+    background-color: $background;
+    color: $foreground;
+}
+
+body {
+    font-family: sans-serif;
+    line-height: 1.4285714286;
+    margin: 0;
+}
+
+main {
+    max-width: 40em;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+p {
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+}
+
+textarea,
+input,
+select,
+button {
+    font-size: 100%;
+    border: 1px solid $border;
+    padding: 0.2em 0.3em;
+    color: $foreground;
+    background: $white;
+    border-radius: 0.15em;
+    line-height: inherit;
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px $focus;
+    }
+}
+
+button {
+    background: $white;
+    padding: 0.2em 1em;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    white-space: nowrap;
+    user-select: none;
+    text-transform: lowercase;
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.70;
+    }
+}
+
+button + button {
+    margin-left: 0.50em;
+}
+
+@each $k, $v in $colors {
+    .button-#{$k} {
+        @include make-button($v);
+    }
+}
+
+.display-inline {
+    display: inline;
+}
+
+button.display-inline {
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: initial;
+}
+
+.button-white {
+    border-color: $border;
+}
+
+.button-transparent {
+    background: transparent;
+    border-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}

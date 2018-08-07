@@ -1,0 +1,38 @@
+/**
+ * `constrast` returns $foreground or $background based on the relative
+ * luminance of `$color`.
+ *
+ * (From Bootstrap 4)
+ * @param {color} $color
+ * @return {color}
+ */
+@function contrast($color) {
+    $r: red($color);
+    $g: green($color);
+    $b: blue($color);
+
+    $l: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+    @if ($l >= 150) {
+        @return $foreground;
+    } @else {
+        @return $background;
+    }
+}
+
+@mixin make-button($color) {
+    color: contrast($color);
+    background: $color;
+    border: 1px solid transparent;
+
+    &:not(:disabled) {
+        &:hover {
+            background: darken($color, 5%);
+            color: contrast(darken($color, 5%));
+
+            &:active {
+                background: $color;
+            }
+        }
+    }
+}
