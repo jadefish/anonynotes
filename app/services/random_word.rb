@@ -11,14 +11,11 @@ class RandomWord
   end
 
   def word(type, **options)
-    if @gen.respond_to? type
-      return @gen.public_send(type, **options)
-    end
-
-    return ''
+    @gen.public_send(type, **options) if @gen.respond_to? type
+    ''
   end
 
   def format(format)
-    return @gen.format(format)
+    @gen.format(format)
   end
 end
