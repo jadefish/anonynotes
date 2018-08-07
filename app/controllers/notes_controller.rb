@@ -34,7 +34,7 @@ class NotesController < ApplicationController
       return
     end
 
-    @like = @note.get_like
+    @like = @note.likes.find_by ip_hash: helpers.hashed_ip
     @like_glyph = @like ? '💔' : '❤️'
     @like_title = (@like ? 'Unlike' : 'Like') +  ' this note'
   end
