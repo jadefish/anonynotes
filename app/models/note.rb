@@ -25,12 +25,12 @@ class Note < ApplicationRecord
 
   # Notes are identified by their string identifier.
   def to_param
-    identifier
+    self.identifier
   end
 
   # Summarize the note, returning an abbreviated string of its text.
   def summary
-    summary = text.mb_chars.slice(0, SUMMARY_LENGTH).to_s
+    summary = self.text.mb_chars.slice(0, SUMMARY_LENGTH).to_s
 
     if summary.mb_chars.length < text.mb_chars.length
       summary += '…'
