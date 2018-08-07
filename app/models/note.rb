@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Note < ApplicationRecord
   include ActiveModel::Validations
 
-  SUMMARY_LENGTH = 35.freeze
+  SUMMARY_LENGTH = 35
 
   validates :identifier, presence: true, uniqueness: true
   validates_format_of :identifier, :without => /\d/

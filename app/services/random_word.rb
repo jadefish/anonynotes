@@ -1,11 +1,10 @@
-require 'singleton'
-require 'spicy-proton'
+# frozen_string_literal: true
 
 class RandomWord
   include Singleton
 
-  MIN_WORD_LENGTH = 4.freeze
-  MAX_WORD_LENGTH = 8.freeze
+  MIN_WORD_LENGTH = 4
+  MAX_WORD_LENGTH = 8
 
   def initialize
     @gen = Spicy::Proton.new

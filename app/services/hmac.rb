@@ -1,9 +1,9 @@
-require 'singleton'
+# frozen_string_literal: true
 
 class HMAC
   include Singleton
 
-  HASH_FUNCTION = 'sha256'.freeze
+  HASH_FUNCTION = 'sha256'
 
   def initialize
     @hmac = OpenSSL::Digest.new(HASH_FUNCTION)
