@@ -1,0 +1,11 @@
+<main>
+    <%=form_with scope: :note, url: notes_path, local: true do |form| %>
+        <%=@note.errors.messages%>
+        <p><%=form.label :text, "what's on your mind?"%></p>
+        <p><%=form.text_area :text, autofocus: true, required: true %></p>
+        <div class="button-container">
+            <%=form.button 'Cancel', type: :button, class: 'button-white' %>   
+            <%=form.button 'Post', type: :submit, id: 'note-submit', class: 'button-accent' %>   
+        </div>
+    <% end %>
+</main>
