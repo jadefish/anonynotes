@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Note is a user-posted note which other users may "like".
 class Note < ApplicationRecord
   include ActiveModel::Validations
 

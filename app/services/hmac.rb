@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# HMAC is a service capable of generating keyed hash digests.
 class HMAC
   include Singleton
 
@@ -11,10 +12,8 @@ class HMAC
 
   # hash generates a hexadecimal-encoded string digest for `message`.
   def hash(message)
-    OpenSSL::HMAC.hexdigest(
-      @hmac,
-      Anonynotes::Application.credentials.secret_key_base,
-      message
-    )
+    OpenSSL::HMAC.hexdigest(@hmac,
+                            Anonynotes::Application.credentials.secret_key_base,
+                            message)
   end
 end

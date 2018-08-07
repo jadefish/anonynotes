@@ -1,7 +1,7 @@
 module ApplicationHelper
   # title defines content for :title within a view.
-  def title(t)
-    content_for(:title) { t + ' - ' }
+  def title(title)
+    content_for(:title) { title + ' - ' }
   end
 
   # hashed_ip returns a hexadecimal-encoded hash of the IP address of the

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# RandomWord is a service capable of generating random words.
 class RandomWord
   include Singleton
 
