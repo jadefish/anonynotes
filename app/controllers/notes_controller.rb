@@ -21,28 +21,23 @@ class NotesController < ApplicationController
   # show handles GET /:identifier.
   def show
     identifier = params[:identifier]
-
-    if not identifier
-      render not_found
-      return
-    end
-
     @note = Note.find(identifier)
 
-    if not @note
+    unless @note
       render not_found
       return
     end
 
     @like = @note.likes.find_by ip_hash: helpers.hashed_ip
     @like_glyph = @like ? '💔' : '❤️'
-    @like_title = (@like ? 'Unlike' : 'Like') +  ' this note'
+    @like_title = (@like ? 'Unlike' : 'Like') + ' this note'
   end
 
   private
-    def note_params
-      params.require(:note).permit(:text).merge(
-        identifier: Note.generate_identifier
-      )
-    end
+
+  def note_params
+    params.require(:note).permit(:text).merge(
+      identifier: Note.generate_identifier
+    )
+  end
 end
