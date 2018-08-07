@@ -18,7 +18,23 @@ class NotesController < ApplicationController
 
   # show handles GET /:identifier.
   def show
-    # TODO
+    identifier = params[:identifier]
+
+    if not identifier
+      render not_found
+      return
+    end
+
+    @note = Note.find(identifier)
+
+    if not @note
+      render not_found
+      return
+    end
+
+    @like = @note.get_like
+    @like_glyph = @like ? '💔' : '❤️'
+    @like_title = (@like ? 'Unlike' : 'Like') +  ' this note'
   end
 
   private
