@@ -8,14 +8,12 @@ class NotesController < ApplicationController
 
   # create handles POST /new.
   def create
-    @note = Note.create(note_params)
-    @note.likes.create(ip_hash: helpers.hashed_ip)
-
-    if @note.save
-      redirect_to @note
-    else
-      render 'new'
+    Note.transaction do
+      @note = Note.create! note_params
+      @like = @note.likes.create! ip_hash: helpers.hashed_ip
     end
+
+    redirect_to @note
   end
 
   # show handles GET /:identifier.
