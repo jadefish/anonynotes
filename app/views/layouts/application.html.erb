@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Anonynotes</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <title><%=content_for?(:title) ? content_for(:title) : ''%>Anonynotes</title>
+    <%=csrf_meta_tags%>
+    <%=csp_meta_tag%>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <%=stylesheet_link_tag 'application', media: 'all'%>
+    <%=javascript_include_tag 'application'%>
   </head>
 
   <body>
-    <%= yield %>
+    <%=yield%>
   </body>
 </html>
