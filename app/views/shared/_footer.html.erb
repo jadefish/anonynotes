@@ -1,5 +1,5 @@
 <footer>
     <div class="row">
-        <span>v.<%=Rails.configuration.version%></span>
+        <span><%=link_to "v.#{Rails.configuration.version}", "https://github.com/jadefish/anonynotes/commit/#{Rails.configuration.version}", rel: :nofollow, target: '_blank'%></span>
     </div>
 </footer>
