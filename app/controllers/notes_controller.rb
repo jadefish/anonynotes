@@ -18,7 +18,7 @@ class NotesController < ApplicationController
 
   # show handles GET /:identifier.
   def show
-    @note = Note.find_by(identifier: params[:identifier])
+    @note = Note.find_by! identifier: params[:identifier]
     @like = @note.likes.find_by ip_hash: helpers.hashed_ip
   end
 
