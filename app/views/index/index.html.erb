@@ -1,4 +1,31 @@
 <main>
-  <h1>Index#index</h1>
-  <p>Find me in app/views/index/index.html.erb</p>
+    <h1>Anonynotes</h1>
+    <p>Anonynotes is an anonymous note-sharing service.</p>
+    <p>Get started and <%=link_to 'post a note', controller: :notes, action: :new%>.</p>
+    <section class="notes-digest">
+        <section>
+            <h1>New</h1>
+            <% if @new_notes.empty? %>
+                <p>None yet!</p>
+            <% else %>
+                <ol>
+                    <% @new_notes.each do |note| %>
+                        <li>+<%=number_to_human note.likes.size%> <%=link_to note.summary, note%></li>
+                    <% end %>
+                </ol>
+            <% end %>
+        </section>
+        <section>
+            <h1>Best of</h1>
+            <% if @best_notes.empty? %>
+                <p>None yet!</p>
+            <% else %>
+                <ol>
+                    <% @best_notes.each do |note| %>
+                        <li>+<%=number_to_human note.likes.size%> <%=link_to note.summary, note%></li>
+                    <% end %>
+                </ol>
+            <% end %>
+        </section>
+    </section>
 </main>
