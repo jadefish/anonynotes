@@ -9,6 +9,7 @@
     <title><%=content_for?(:title) ? content_for(:title) : ''%>Anonynotes</title>
 </head>
 <body>
+    <%=render 'shared/nav_bar'%>
     <%=yield%>
     <%=javascript_include_tag 'application'%>
 </body>
