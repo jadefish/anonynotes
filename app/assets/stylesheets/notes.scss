@@ -9,6 +9,7 @@ textarea#note_text {
     min-height: calc(4 * 1em * 20/14 + 0.2em * 2 + 2px); // 4 lines
     height: calc(7 * 1em * 20/14 + 0.2em * 2 + 2px); // 7 lines
     max-height: 70vh;
+    resize: vertical;
 }
 
 blockquote.note > p {
