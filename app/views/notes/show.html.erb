@@ -6,11 +6,14 @@
             &#x2015;<cite>anonymous, <time datetime="<%=@note.created_at.getutc.iso8601%>" title="<%=@note.created_at.getutc.iso8601%>"><%=time_ago_in_words @note.created_at%> ago</time></cite>
         </footer>
     </blockquote>
-    <% if @like %>
-        <p title="<%=pluralize @note.likes.size, 'person likes', 'people like'%> this note">❤️ +<%=number_to_human @note.likes.size%></p>
-    <% else %>
-        <%=form_with url: note_likes_path(note_identifier: @note.identifier), local: true do |form| %>
-            <%=form.button "❤️ +#{number_to_human @note.likes.size}", type: :submit, title: 'Like this note', class: 'like-note' %>
+    <div class="note-tools">
+        <% if @like %>
+            <p title="<%=pluralize @note.likes.size, 'person likes', 'people like'%> this note">❤️ +<%=number_to_human @note.likes.size%></p>
+        <% else %>
+            <%=form_with url: note_likes_path(note_identifier: @note.identifier), local: true do |form| %>
+                <%=form.button "❤️ +#{number_to_human @note.likes.size}", type: :submit, title: 'Like this note', class: 'like-note' %>
+            <% end %>
         <% end %>
-    <% end %>
+        <p class="note-permalink"><%=link_to 'Permalink', @note, rel: :nofollow%></p>
+    </div>
 </main>

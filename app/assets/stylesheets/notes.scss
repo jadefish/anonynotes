@@ -28,3 +28,12 @@ button.like-note {
     line-height: 1;
     vertical-align: initial;
 }
+
+.note-tools {
+    display: flex;
+    flex: 0 1 auto;
+}
+
+.note-tools .note-permalink {
+    margin-left: 1em;
+}
