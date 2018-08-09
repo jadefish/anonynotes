@@ -17,15 +17,6 @@ class Note < ApplicationRecord
     RandomWord.instance.format('%a %a %n').titleize.delete ' '
   end
 
-  # Find a Note by its integer ID or string identifier.
-  def self.find(input)
-    if input.to_i.positive?
-      super
-    else
-      find_by_identifier(input)
-    end
-  end
-
   # Notes are identified by their string identifier.
   def to_param
     identifier

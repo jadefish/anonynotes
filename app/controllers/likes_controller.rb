@@ -1,8 +1,7 @@
 class LikesController < ApplicationController
   # create handles POST /:note_identifier/like.
   def create
-    identifier = params[:note_identifier]
-    @note = Note.find(identifier)
+    @note = Note.find_by identifier: params[:note_identifier]
 
     # Since we're not XHRing, differentiate between liking and unliking notes
     # by checking if the current user has already liked @note:
