@@ -13,25 +13,25 @@
 }
 
 html {
+    height: 100%;
     font-size: 100%;
     background-color: $background;
     color: $foreground;
 }
 
 body {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+    padding-bottom: 6rem;
     font-family: sans-serif;
     line-height: 1.4285714286;
-    margin: 0;
 }
 
 .row {
     max-width: 45em;
     margin: 0 auto;
     padding: 1rem;
-}
-
-main.row {
-    min-height: 87.30vh;
 }
 
 p {
@@ -95,7 +95,16 @@ button + button {
 }
 
 main + footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background: $foreground;
     color: $background;
     text-align: right;
+}
+
+main + footer a {
+    color: $border;
+    text-decoration: none;
 }
