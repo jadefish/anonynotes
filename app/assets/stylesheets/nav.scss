@@ -4,8 +4,11 @@ nav {
     background: $foreground;
 }
 
-nav > .row {
+nav > .row,
+nav form {
     display: flex;
+    flex: 0 1 auto;
+    align-items: center;
     padding: 0;
 }
 
@@ -13,6 +16,11 @@ nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
+    flex-grow: 1;
+}
+
+nav form input {
+    margin: 0 0.90rem;
 }
 
 nav a {
