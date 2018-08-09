@@ -30,6 +30,10 @@ body {
     padding: 1rem;
 }
 
+main.row {
+    min-height: 87.30vh;
+}
+
 p {
     margin-top: 0.75em;
     margin-bottom: 0.75em;
@@ -88,4 +92,10 @@ button + button {
 .button-container {
     display: flex;
     justify-content: flex-end;
+}
+
+main + footer {
+    background: $foreground;
+    color: $background;
+    text-align: right;
 }
