@@ -9,9 +9,7 @@
                 <p>None yet!</p>
             <% else %>
                 <ol>
-                    <% @new_notes.each do |note| %>
-                        <li>+<%=number_to_human note.likes.size%> <%=link_to note.summary, note%></li>
-                    <% end %>
+                    <%=render partial: "notes/list_item", collection: @new_notes, as: :note%>
                 </ol>
             <% end %>
         </section>
@@ -21,9 +19,7 @@
                 <p>None yet!</p>
             <% else %>
                 <ol>
-                    <% @best_notes.each do |note| %>
-                        <li>+<%=number_to_human note.likes.size%> <%=link_to note.summary, note%></li>
-                    <% end %>
+                    <%=render partial: "notes/list_item", collection: @best_notes, as: :note%>
                 </ol>
             <% end %>
         </section>
