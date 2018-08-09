@@ -13,7 +13,7 @@ class Note < ApplicationRecord
 
   has_many :likes, autosave: true, dependent: :destroy
 
-  scope :best, -> { order('likes_count DESC').limit(DIGEST_LIMIT) }
+  scope :best, -> { order('likes_count DESC, id DESC').limit(DIGEST_LIMIT) }
   scope :newest, -> { order('id DESC') }
 
   # Generate a three-word identifier string.
