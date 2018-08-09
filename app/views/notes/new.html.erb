@@ -1,8 +1,11 @@
 <main class="row">
     <%=form_with scope: :note, url: notes_path, local: true do |form| %>
-        <p><%=form.label :text, "what's on your mind?"%></p>
-        <p><%=form.text_area :text, autofocus: true, required: true %></p>
+        <div>
+            <p><%=form.label :text, "what's on your mind?"%></p>
+            <%=form.text_area :text, autofocus: true, required: true %>
+        </div>
         <div class="button-container">
+            <span class="form-errors"><%=@note.errors.full_messages.join ',' unless @note.errors.empty?%></span>
             <%=form.button 'Cancel', type: :button, class: 'button-white' %>
             <%=form.button 'Post', type: :submit, id: 'note-submit', class: 'button-accent' %>
         </div>

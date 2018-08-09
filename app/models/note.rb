@@ -9,7 +9,7 @@ class Note < ApplicationRecord
 
   validates :identifier, presence: true, uniqueness: true
   validates_format_of :identifier, with: /[a-zA-Z]+/
-  validates :text, presence: true
+  validates :text, presence: { message: "can't be empty" }
 
   has_many :likes, autosave: true, dependent: :destroy
 

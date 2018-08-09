@@ -4,16 +4,24 @@ class NotesController < ApplicationController
   # new handles GET /new.
   def new
     @note = Note.new
+    @like = Like.new
   end
 
   # create handles POST /new.
   def create
-    Note.transaction do
-      @note = Note.create! note_params
-      @like = @note.likes.create! ip_hash: helpers.hashed_ip
-    end
+    @note = Note.new note_params
+    @like = @note.likes.build ip_hash: helpers.hashed_ip
 
-    redirect_to @note
+    begin
+      Note.transaction do
+        @note.save!
+        @like.save!
+      end
+
+      redirect_to @note
+    rescue ActiveRecord::RecordInvalid, ActiveRecord::NotNullViolation
+      render :new
+    end
   end
 
   # show handles GET /:identifier.

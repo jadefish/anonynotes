@@ -17,7 +17,7 @@ blockquote.note > p {
 }
 
 blockquote.note {
-    margin-bottom: 2em;
+    margin: 0 0 2em;
 }
 
 button.like-note {
@@ -36,4 +36,9 @@ button.like-note {
 
 .note-tools .note-permalink {
     margin-left: 1em;
+}
+
+.button-container > span.form-errors {
+    color: red;
+    flex-grow: 1;
 }
