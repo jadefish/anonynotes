@@ -5,7 +5,7 @@ class Note < ApplicationRecord
   include ActiveModel::Validations
 
   SUMMARY_LENGTH = 35
-  DIGEST_LIMIT = 25
+  DIGEST_LIMIT = 10
 
   validates :identifier, presence: true, uniqueness: true
   validates_format_of :identifier, with: /[a-zA-Z]+/
