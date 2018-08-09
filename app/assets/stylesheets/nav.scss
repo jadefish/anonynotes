@@ -2,10 +2,14 @@
 
 nav {
     background: $foreground;
-    display: flex;
 }
 
-nav > ul {
+nav > .row {
+    display: flex;
+    padding: 0;
+}
+
+nav ul {
     margin: 0;
     padding: 0;
     list-style: none;

@@ -1,4 +1,4 @@
-<main>
+<main class="row">
     <%=form_with scope: :note, url: notes_path, local: true do |form| %>
         <p><%=form.label :text, "what's on your mind?"%></p>
         <p><%=form.text_area :text, autofocus: true, required: true %></p>
