@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_03_162625) do
+ActiveRecord::Schema.define(version: 2018_08_09_024123) do
 
   create_table "likes", force: :cascade do |t|
     t.text "ip_hash", null: false
     t.datetime "created_at", null: false, default: -> { 'CURRENT_TIMESTAMP' }
     t.belongs_to "like", null: false, index: true, foreign_key: { on_update: :cascade, on_delete: :cascade }
-    t.index ["ip_hash", nil], name: "index_likes_on_ip_hash_and_note_id", unique: true
+    t.index ["ip_hash", "note_id"], name: "index_likes_on_ip_hash_and_note_id", unique: true
     t.index ["note_id"], name: "index_likes_on_note_id"
   end
 
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2018_08_03_162625) do
     t.text "identifier", null: false
     t.text "text", null: false
     t.datetime "created_at", null: false, default: -> { 'CURRENT_TIMESTAMP' }
+    t.integer "likes_count", default: 0, null: false
     t.index ["identifier"], name: "index_notes_on_identifier", unique: true
   end
 
