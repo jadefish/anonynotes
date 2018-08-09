@@ -1,0 +1,28 @@
+@import 'variables.scss';
+
+nav {
+    background: $foreground;
+    display: flex;
+}
+
+nav > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav a {
+    color: $background;
+    display: inline-block;
+    padding: 0.75rem 0.90rem;
+    text-decoration: none;
+    text-transform: lowercase;
+}
+
+nav a:hover {
+    background: $accent;
+}
+
+.nav-brand {
+    font-weight: 600;
+}
