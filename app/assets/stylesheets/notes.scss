@@ -1,6 +1,6 @@
-#note_text {
+textarea#note_text,
+blockquote.note > p {
     width: 100%;
-    resize: vertical;
     font-family: serif;
     font-size: 125%;
 }
@@ -9,4 +9,21 @@ textarea#note_text {
     min-height: calc(4 * 1em * 20/14 + 0.2em * 2 + 2px); // 4 lines
     height: calc(7 * 1em * 20/14 + 0.2em * 2 + 2px); // 7 lines
     max-height: 70vh;
+}
+
+blockquote.note > p {
+    white-space: pre-wrap;
+}
+
+blockquote.note {
+    margin-bottom: 3em;
+}
+
+button.like-note {
+    background: transparent;
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+    line-height: 1;
+    vertical-align: initial;
 }
