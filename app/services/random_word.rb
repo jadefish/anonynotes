@@ -11,9 +11,16 @@ class RandomWord
     @gen = Spicy::Proton.new
   end
 
-  def word(type, **options)
-    @gen.public_send(type, **options) if @gen.respond_to? type
-    ''
+  # word generates a random word of the provided type.
+  # Supported types are: adjective, adverb, noun, verb.
+  def word(type, *args)
+    raise NoMethodError unless @gen.respond_to? type
+
+    @gen.public_send(type, *args)
+  end
+
+  def pair
+    @gen.pair
   end
 
   def format(format)
