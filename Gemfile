@@ -28,4 +28,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Application gems:
-gem "spicy-proton", "~> 2.1"
+gem 'fts_lite', '~> 0.2.0'
+gem 'spicy-proton', '~> 2.1'
