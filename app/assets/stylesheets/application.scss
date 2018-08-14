@@ -75,7 +75,9 @@ button {
     }
 }
 
-button + button {
+button + button,
+button + input,
+input + button {
     margin-left: 0.50em;
 }
 

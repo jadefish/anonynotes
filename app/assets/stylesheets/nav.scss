@@ -19,8 +19,8 @@ nav ul {
     flex-grow: 1;
 }
 
-nav form input {
-    margin: 0 0.90rem;
+nav form input[type="search"] {
+    border-color: transparent;
 }
 
 nav a {
