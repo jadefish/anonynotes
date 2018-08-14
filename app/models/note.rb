@@ -16,6 +16,8 @@ class Note < ApplicationRecord
   scope :best, -> { order('likes_count DESC, id DESC').limit(DIGEST_LIMIT) }
   scope :newest, -> { order('id DESC') }
 
+  after_commit :index
+
   # Generate a three-word identifier string.
   def self.generate_identifier
     RandomWord.instance.format('%a %a %n').titleize.delete ' '
@@ -30,5 +32,12 @@ class Note < ApplicationRecord
   def summarize(length = SUMMARY_LENGTH)
     summary = text.mb_chars.slice(0, length).to_s
     summary << ('…' if summary.mb_chars.length < text.mb_chars.length).to_s
+  end
+
+  private
+
+  # index the note's contents.
+  def index
+    NotesIndex.instance.set self
   end
 end
