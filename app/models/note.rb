@@ -26,9 +26,9 @@ class Note < ApplicationRecord
     identifier
   end
 
-  # Summarize the note, returning an abbreviated string of its text.
-  def summary
-    summary = text.mb_chars.slice(0, SUMMARY_LENGTH).to_s
+  # summarize the note, returning an abbreviated string of its text.
+  def summarize(length = SUMMARY_LENGTH)
+    summary = text.mb_chars.slice(0, length).to_s
     summary << ('…' if summary.mb_chars.length < text.mb_chars.length).to_s
   end
 end
