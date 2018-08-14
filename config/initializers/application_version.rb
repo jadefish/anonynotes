@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if Rails.env.development?
   # Update .app-version with latest git tag:
   File.open('.app-version', 'w') do |file|
