@@ -23,6 +23,15 @@ class Note < ApplicationRecord
     RandomWord.instance.format('%a %a %n').titleize.delete ' '
   end
 
+  # Find notes containing `query`.
+  def self.search(query, limit = DIGEST_LIMIT)
+    where(
+      'id IN (?)',
+      NotesIndex.instance.search(query.to_s, order: :desc, limit: limit)
+    )
+      .order('likes_count DESC, id DESC')
+  end
+
   # Notes are primarily identified by their string identifier.
   def to_param
     identifier
