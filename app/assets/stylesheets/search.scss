@@ -1,3 +1,13 @@
-// Place all the styles related to the Search controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'variables.scss';
+
+.search-result {
+    padding: 0.50em;
+}
+
+.search-result:first-of-type {
+    padding-top: 0em;
+}
+
+.search-result + .search-result {
+    margin-top: 1em;
+}

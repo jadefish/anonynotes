@@ -1,8 +1,9 @@
+<%- title @query %>
 <main class="row">
     <section>
         <h1>Results for &ldquo;<%=@query%>&rdquo;</h1>
         <% if @results.any? %>
-            TODO
+            <%= render partial: 'search/result', collection: @results, as: :note %>
         <% else %>
             <p>No results</p>
         <% end %>
