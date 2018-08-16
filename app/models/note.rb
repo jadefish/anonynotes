@@ -16,7 +16,7 @@ class Note < ApplicationRecord
   scope :best, -> { order('likes_count DESC, id DESC').limit(DIGEST_LIMIT) }
   scope :newest, -> { order('id DESC').limit(DIGEST_LIMIT) }
 
-  after_commit :index
+  after_commit :index, if: :persisted?
 
   # Generate a three-word identifier string.
   def self.generate_identifier
