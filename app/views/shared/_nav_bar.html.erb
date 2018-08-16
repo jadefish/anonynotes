@@ -5,7 +5,7 @@
             <li><%=link_to "Post", controller: :notes, action: :new%></li>
         </ul>
         <form action="/search" method="GET">
-            <input type="search" placeholder="search" name="q" value="<%=@query%>" required pattern="\S+">
+            <input type="search" placeholder="search" name="q" value="<%=@query%>" required pattern=".*\S+.*">
             <button type="submit" class="button-accent">Go</button>
         </form>
     </div>
