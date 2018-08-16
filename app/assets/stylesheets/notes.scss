@@ -14,10 +14,11 @@ textarea#note_text {
 
 blockquote.note > p {
     white-space: pre-wrap;
+    line-height: calc(26/14);
 }
 
 blockquote.note {
-    margin: 0 0 2em;
+    margin: 2em 0;
 }
 
 button.like-note {

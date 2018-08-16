@@ -1,4 +1,8 @@
 <section class="search-result">
-    <p><%=link_to note.summarize(200), note%></p>
-    <p>❤️ +<%=number_to_human note.likes.size%></p>
+    <p><%= link_to note.summarize(200), note %></p>
+    <p>
+        <time datetime="<%=note.created_at.getutc.iso8601%>" title="<%=note.created_at.getutc.iso8601%>"><%=time_ago_in_words note.created_at%> ago</time>
+        &nbsp;
+        <span>❤️ +<%=number_to_human note.likes.size%></span>
+    </p>
 </section>
