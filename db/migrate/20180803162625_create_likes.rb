@@ -6,6 +6,6 @@ class CreateLikes < ActiveRecord::Migration[5.2]
       t.belongs_to :note, null: false, index: true, foreign_key: { on_update: :cascade, on_delete: :cascade }
     end
 
-    add_index :likes, [:ip_hash, 'notes_id'], unique: true
+    add_index :likes, [:ip_hash, 'note_id'], unique: true
   end
 end
