@@ -9,7 +9,7 @@
     <% if with_tools %>
         <div class="note-tools">
             <% if @like %>
-                <p title="<%=pluralize @note.likes.size, 'person likes', 'people like'%> this note">❤️ +<%=number_to_human @note.likes.size%></p>
+                <p class="note-likes" title="<%=pluralize @note.likes.size, 'person likes', 'people like'%> this note">❤️ +<%=number_to_human @note.likes.size%></p>
             <% else %>
                 <%=form_with url: note_likes_path(note_identifier: @note.identifier), local: true do |form| %>
                     <%=form.button "❤️ +#{number_to_human @note.likes.size}", type: :submit, title: 'Like this note', class: 'like-note' %>
