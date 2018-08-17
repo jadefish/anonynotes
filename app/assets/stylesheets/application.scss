@@ -51,7 +51,17 @@ button {
     background: $white;
     border-radius: 0.15em;
     line-height: inherit;
+}
 
+a:not(:visited) {
+    color: darken($accent, 5%);
+}
+
+textarea,
+input,
+select,
+button,
+a {
     &:focus {
         outline: none;
         box-shadow: 0 0 0 2px $focus;
