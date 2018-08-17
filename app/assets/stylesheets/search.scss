@@ -1,7 +1,6 @@
-@import 'variables.scss';
-
 .search-result {
-    padding: 0.50em;
+    padding-top: 0.50em;
+    padding-bottom: 0.50em;
 }
 
 .search-result:first-of-type {
@@ -9,5 +8,5 @@
 }
 
 .search-result + .search-result {
-    margin-top: 1em;
+    margin-top: 0.50em;
 }
