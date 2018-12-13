@@ -9,4 +9,8 @@ module ApplicationHelper
   def hashed_ip
     HMAC.instance.hash request.remote_ip
   end
+
+  def heart
+    "\u2764\ufe0f".encode('utf-8')
+  end
 end
