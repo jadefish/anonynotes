@@ -25,14 +25,11 @@ class Note < ApplicationRecord
 
   # Find notes containing `query`.
   def self.search(query, limit = DIGEST_LIMIT)
-    where(
-      'id IN (?)',
-      NotesIndex.instance.search(query.to_s, order: :desc, limit: limit)
-    )
-      .order('likes_count DESC, id DESC')
+    ids = NotesIndex.instance.search(query.to_s, order: :desc, limit: limit)
+    where(id: ids).order(likes_count: :desc, id: :desc)
   end
 
-  # Notes are primarily identified by their string identifier.
+  # Notes are identified primarily by their string identifier.
   def to_param
     identifier
   end
@@ -47,6 +44,6 @@ class Note < ApplicationRecord
 
   # index the note's contents.
   def index
-    NotesIndex.instance.set self
+    NotesIndex.instance.set(self)
   end
 end

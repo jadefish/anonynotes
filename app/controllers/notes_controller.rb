@@ -9,13 +9,10 @@ class NotesController < ApplicationController
 
   # create handles POST /new.
   def create
-    @note = Note.new note_params
-    @like = @note.likes.build ip_hash: helpers.hashed_ip
-
     begin
-      Note.transaction do
-        @note.save!
-        @like.save!
+      ActiveRecord::Base.transaction do
+        @note = Note.create!(note_params)
+        @like = @note.likes.create!(ip_hash: helpers.hashed_ip)
       end
 
       redirect_to @note
@@ -26,8 +23,8 @@ class NotesController < ApplicationController
 
   # show handles GET /:identifier.
   def show
-    @note = Note.find_by! identifier: params[:identifier]
-    @like = @note.likes.find_by ip_hash: helpers.hashed_ip
+    @note = Note.find_by!(identifier: params[:identifier])
+    @like = @note.likes.find_by(ip_hash: helpers.hashed_ip)
   end
 
   private

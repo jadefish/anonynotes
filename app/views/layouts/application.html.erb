@@ -6,7 +6,7 @@
     <%=csrf_meta_tags%>
     <%=csp_meta_tag%>
     <%=stylesheet_link_tag 'application', media: 'all'%>
-    <title><%=content_for?(:title) ? content_for(:title) : ''%>Anonynotes</title>
+    <title><%=content_for(:title)%>Anonynotes</title>
 </head>
 <body>
     <%=render 'shared/nav_bar'%>

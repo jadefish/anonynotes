@@ -14,8 +14,6 @@ class RandomWord
   # word generates a random word of the provided type.
   # Supported types are: adjective, adverb, noun, verb.
   def word(type, *args)
-    raise NoMethodError unless @gen.respond_to? type
-
     @gen.public_send(type, *args)
   end
 
