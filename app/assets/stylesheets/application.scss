@@ -121,3 +121,8 @@ main + footer .row a {
     color: $border;
     text-decoration: none;
 }
+
+::selection {
+    background: $black;
+    color: $white;
+}
