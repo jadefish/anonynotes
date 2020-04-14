@@ -7,7 +7,7 @@ module ApplicationHelper
   # hashed_ip returns a hexadecimal-encoded hash of the IP address of the
   # current request.
   def hashed_ip
-    HMAC.instance.hash request.remote_ip
+    Hmac.instance.hash request.remote_ip
   end
 
   def heart
