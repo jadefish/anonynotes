@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# HMAC is a service capable of generating keyed hash digests.
-class HMAC
+# Hmac is a service capable of generating keyed hash digests.
+class Hmac
   include Singleton
 
   HASH_FUNCTION = 'sha256'
