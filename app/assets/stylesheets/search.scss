@@ -1,12 +1,16 @@
+.search-results {
+  list-style: none;
+  padding: 0;
+}
+
 .search-result {
-    padding-top: 0.50em;
-    padding-bottom: 0.50em;
+  padding: 0.5em;
+
+  > p {
+    margin: 0;
+  }
 }
 
-.search-result:first-of-type {
-    padding-top: 0em;
-}
-
-.search-result + .search-result {
-    margin-top: 0.50em;
+.search-result:nth-child(2n) {
+  background: #eee;
 }

@@ -1,11 +1,13 @@
-<%- title @query %>
+<%- title "Results for \"#{@query}\"" %>
 <main class="row">
-    <section>
-        <h1>Results for &ldquo;<%=@query%>&rdquo;</h1>
-        <% if @results.any? %>
-            <%= render partial: 'search/result', collection: @results, as: :note %>
-        <% else %>
-            <p>No results</p>
-        <% end %>
-    </section>
+  <section>
+    <h1>Results for &ldquo;<%=@query%>&rdquo;</h1>
+    <% if @results.any? %>
+      <ul class="search-results">
+        <%= render partial: 'search/result', collection: @results, as: :note %>
+      </ul>
+    <% else %>
+      <p>No results</p>
+    <% end %>
+  </section>
 </main>
