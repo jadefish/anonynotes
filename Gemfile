@@ -11,12 +11,15 @@ gem 'sass-rails', '~> 6'
 gem 'listen', '~> 3', require: false
 gem 'bootsnap', '~> 1', require: false
 
-group :development do
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+group :development, :test do
+  gem 'pry', require: false
+  gem 'pry-byebug', require: false
+  gem 'byebug', platforms: %i[mri mingw x64_mingw], require: false
 end
 
 group :test do
   gem 'rspec', '~> 3'
+  gem 'simplecov', '~> 0', require: false
 end
 
 # Application gems:

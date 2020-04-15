@@ -24,3 +24,9 @@
 /config/master.key
 
 Gemfile.lock
+
+# Rspec state persistence:
+/spec/examples.txt
+
+# Test coverage:
+/coverage

@@ -1,8 +1,12 @@
 class LikesController < ApplicationController
-  # create handles POST /:note_identifier/like.
   def create
-    @note = Note.find_by!(identifier: params[:note_identifier])
-    @like = @note.likes.find_by(ip_hash: helpers.hashed_ip)
+    result = Interactors::FindNote.new.call(identifier: params[:note_identifier])
+    @note = result.unwrap_or_else { |err| render_error(err) }
+
+    hashed_ip = helpers.hashed_ip # TODO: refactor
+
+    result = Interactors::LikeNote.new.call(note: @note, ip_hash: hashed_ip)
+    @like = result.unwrap_or_else { |err| render_error(err) }
 
     redirect_to @note
   end

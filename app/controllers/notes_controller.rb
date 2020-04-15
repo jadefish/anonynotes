@@ -1,37 +1,36 @@
-# frozen_string_literal: true
-
 class NotesController < ApplicationController
-  # new handles GET /new.
   def new
     @note = Note.new
     @like = Like.new
   end
 
-  # create handles POST /new.
   def create
-    begin
-      ActiveRecord::Base.transaction do
-        @note = Note.create!(note_params)
-        @like = @note.likes.create!(ip_hash: helpers.hashed_ip)
-      end
+    result = ::Interactors::CreateNote.new.call(
+      attributes: note_params.to_hash,
+      ip_hash: hashed_ip
+    )
+    @note = result.unwrap_or_else { |err| render_error(err) } or return
 
-      redirect_to @note
-    rescue ActiveRecord::RecordInvalid, ActiveRecord::NotNullViolation
-      render :new
-    end
+    redirect_to @note
   end
 
-  # show handles GET /:identifier.
   def show
-    @note = Note.find_by!(identifier: params[:identifier])
-    @like = @note.likes.find_by(ip_hash: helpers.hashed_ip)
+    result = ::Interactors::FindNote.new.call(identifier: params[:identifier])
+    @note = result.unwrap_or_else { |err| render_error(err) }
+
+    @like = @note.likes.find_by(ip_hash: hashed_ip)
   end
 
   private
 
   def note_params
-    params.require(:note).permit(:text).merge(
-      identifier: Note.generate_identifier
-    )
+    params
+      .require(:note)
+      .permit(:text)
+      .merge(identifier: Note.generate_identifier)
+  end
+
+  def hashed_ip
+    helpers.hashed_ip # TODO: refactor
   end
 end

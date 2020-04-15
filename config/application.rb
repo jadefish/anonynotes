@@ -28,5 +28,7 @@ module Anonynotes
     # the framework and any gems in your application.
 
     config.notes_search_index_table_name = 'notes_search_index'
+
+    config.autoload_paths += Dir[Rails.root.join('app', 'interactors')]
   end
 end

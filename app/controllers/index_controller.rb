@@ -1,9 +1,9 @@
-# frozen_string_literal: true
-
-# IndexController renders index-related pages.
 class IndexController < ApplicationController
   def index
-    @new_notes = Note.newest
-    @best_notes = Note.best
+    result = Interactors::NewNotes.new.call
+    @new_notes = result.unwrap_or_else { |err| render_error(err) }
+
+    result = Interactors::BestNotes.new.call
+    @best_notes = result.unwrap_or_else { |err| render_error(err) }
   end
 end
